@@ -1,0 +1,91 @@
+﻿@using IFlixr.ViewModel
+@model HomePage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="vm-global">
+    <div class="row">
+        <!-- START CENTER TAB - VIDEO -->
+        <div class="center-tab">
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="a12" data-toggle="tab">Popular Videos</a> </li>
+                    <li class=""><a href="" data-toggle="tab">Music</a> </li>
+                    <li class=""><a href="#" data-toggle="tab">Movies</a> </li>
+                    <li class=""><a href="#" data-toggle="tab">Comedy</a> </li>
+                    <li class=""><a href="#" data-toggle="tab">News & Politics</a> </li>
+                    <li class=""><a href="#" data-toggle="tab">Ameatuer</a> </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="a12" data-bind="foreach:VideoCarousels">
+                        @if (Model.Js)
+                        {
+                            @Html.Partial("_CarouselVideoTabbed", Model.VideoCarousels[0])
+                        }
+                        else
+                        {
+                            foreach (var rm in Model.VideoCarousels)
+                            {
+                            @Html.Partial("_CarouselVideoTabbed", rm)
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- END CENTER TAB - VIDEO -->
+        </div>
+    </div>
+    <div class="gap">
+    </div>
+    <!-- START RELATED VIDEOS -->
+    @if (Model.Js)
+    {
+        <div class="bg-gray  extend" data-bind="foreach:VideoCarousels">
+            @Html.Partial("_CarouselVideoHorizontal", Model.VideoCarousels[0])
+        </div>
+        <div class="gap">
+        </div>
+    
+        <div class="bg-gray  extend" data-bind="foreach:MovieCarousels">
+            @Html.Partial("_CarouselMovieHorizontal", Model.MovieCarousels[0])
+        </div>
+        <div class="gap">
+        </div>
+    }
+    else
+    {
+
+        foreach (var rm in Model.VideoCarousels)
+        {
+        
+        <div class="bg-gray  extend">
+            @Html.Partial("_CarouselVideoHorizontal", rm)
+        </div>
+        <div class="gap">
+        </div>
+        }
+        foreach (var rm in Model.MovieCarousels)
+        {
+        <div class="bg-gray  extend">
+            @Html.Partial("_CarouselMovieHorizontal", rm)
+        </div>
+        <div class="gap">
+        </div>
+        }
+    }
+    <!-- END RELATED VIDEOS -->
+    <div class="gap">
+    </div>
+</div>
+@section StickyHeader{
+    @Html.Partial("_StickyHeader")
+}
+@section Script{
+    @if (Model.Js)
+    {
+        <script type="text/javascript">
+            app.init.bindKO(@Html.Raw(Json.Encode(Model)));
+        </script>
+    }
+}

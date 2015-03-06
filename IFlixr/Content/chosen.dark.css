@@ -1,0 +1,70 @@
+﻿/* dark color overrides */
+ 
+#top-menu-left-container .chzn-container .chzn-results li {
+  color: #999999;   
+}
+#top-menu-left-container .chzn-container .chzn-drop, .chzn-container-single .chzn-single {
+  background-color: #252525;
+  color: #8C8C8C;
+}
+/* Some IE 7-9 fun with this next one - filter likes to override background */
+#top-menu-left-container .chzn-container-single .chzn-single {
+  background-color: #333333;
+  /*background-image: none;*/
+  background-image: -webkit-linear-gradient(center bottom, #333333 0%, #121212 60%);
+  background-image: -moz-linear-gradient(center bottom, #333333 0%, #121212 60%);
+  background-image: -o-linear-gradient(bottom, #333333 0%, #121212 60%);
+  background-image: -ms-linear-gradient(top, #333333 0%,#121212 60%);
+  /*background: #000000 none top left no-repeat;*/
+  filter: none;
+  border: none;
+  display: block;
+  height: 30px;
+}
+#top-menu-left-container .chzn-container .chzn-drop {
+  border: 1px solid #121212;    
+}
+#top-menu-left-container .chzn-container-single .chzn-single div {
+  background-image: -webkit-gradient(linear, left bottom, left top, 
+    color-stop(0, #333333), color-stop(0.6, #121212));
+  background-image: -webkit-linear-gradient(center bottom, #333333 0%, #121212 60%);
+  background-image: -moz-linear-gradient(center bottom, #333333 0%, #121212 60%);
+  background-image: -o-linear-gradient(bottom, #333333 0%, #121212 60%);
+  background-image: -ms-linear-gradient(top, #333333 0%,#121212 60%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', 
+    endColorstr='#121212',GradientType=0 );
+  background-image: linear-gradient(top, #333333 0%,#121212 60%);
+  border-left: 1px solid #252525;
+  
+}
+#top-menu-left-container .chzn-container-active .chzn-single-with-drop {
+  box-shadow: none; 
+}
+#top-menu-left-container .chzn-container .chzn-results .highlighted {
+  background: #333333;
+  color: #eeeeee;
+}
+#top-menu-left-container .chzn-container .chzn-results .no-results {
+  background: #333;
+}
+#top-menu-left-container .chzn-container .chzn-results li em {
+  background: none;
+}
+ 
+/* dark sprite overrides */
+ 
+#top-menu-left-container .chzn-container-single .chzn-single abbr {
+  background: url('../Images/chosen-sprite-dark.png') right top no-repeat;
+}
+#top-menu-left-container .chzn-container-single .chzn-single div b {
+  background: url('../Images/chosen-sprite-dark.png') no-repeat 0 1px;
+}
+#top-menu-left-container .chzn-container-single .chzn-search input,
+#top-menu-left-container .chzn-rtl .chzn-search input {
+  background: #333 url('../Images/chosen-sprite-dark.png') no-repeat 100% -22px;
+  color: #999999;
+  border: 1px solid #555555;
+}
+#top-menu-left-container .chzn-container-multi .chzn-choices .search-choice .search-choice-close {
+  background: url('../Images/chosen-sprite-dark.png') right top no-repeat;
+}

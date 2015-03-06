@@ -1,0 +1,151 @@
+﻿@using IFlixr.Cooking.ViewModel
+@model BaseViewModel
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TasteYo! - Share your Recipes</title>
+    <!-- meta info -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="food, photos, food blog, recipes, photography, cooking, bloggers, pictures, baking, community, gallery,food photography, food styling, restaurant reviews" />
+    <meta name="description" content="Share your Recipes">
+    <meta name="author" content="TasteYo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Partial("_IncludeCSS")
+</head>
+<body class="width1200 sticky-header vm-common" lang="en" data-bind="with: vm">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container-global">
+        <header>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span1">
+                                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                                    </span></a><a class="brand logo" href="/">
+                                        <img src="~/Content/img/logo.png" alt="Home" title="TasteYo! Home"></a>
+                            </div>
+                            <div class="span11">
+                                <div class="nav-collapse navbar-responsive-collapse collapse">
+                                    <div class="span5" data-bind="with: menuModel">
+                                        <ul class="nav">
+                                            <li class="" data-bind="css:{active: ActiveMenu() === 'latest'}"><a href="/"><i class="icon-sort-by-attributes animate-icon-top-to-bottom icon-big">
+                                            </i>&nbsp;Latest</a></li>
+                                            <li class="dropdown" data-bind="css:{active: ActiveMenu() === 'popular'}"><a href="#" class="dropdown-toggle"
+                                                data-toggle="dropdown"><i class="icon-star animate-icon-top-to-bottom icon-big">
+                                                </i>&nbsp;Popular <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'ptoday'}"><a href="/?sort=popular&duration=today">Most
+                                                        Viewed - Today</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'pweek'}"><a href="/?sort=popular&duration=week">Most
+                                                        Viewed - Week</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'pmonth'}"><a href="/?sort=popular&duration=month">Most
+                                                        Viewed - Month</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'pall'}"><a href="/?sort=popular">Most
+                                                        Viewed - All</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown" data-bind="css:{active: ActiveMenu === 'favourite'}"><a href="#" class="dropdown-toggle"
+                                                data-toggle="dropdown"><i class="icon-heart animate-icon-top-to-bottom icon-big">
+                                                </i>&nbsp;Favourite <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'ftoday'}"><a href="/?sort=favourite&duration=today">
+                                                        Most Favourited - Today</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'fweek'}"><a href="/?sort=favourite&duration=week">
+                                                        Most Favourited - Week</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'fmonth'}"><a href="/?sort=favourite&duration=month">
+                                                        Most Favourited - Month</a></li>
+                                                    <li data-bind="css:{active: ActiveSubMenu() === 'fall'}"><a href="/?sort=favourite">Most
+                                                        Favourited - All</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="span3">
+                                        <form class="form-search pull-left nav" action="">
+                                        <div class="input-append ">
+                                            <input type="text" autocomplete="off" class="span search-query recipe typeahead"
+                                                placeholder="Search recipe, author..">
+                                            <a type="submit" class="btn btn-primary"><i class="icon-search"></i></a>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="span2" data-bind="with: userModel">
+                                        <ul class="nav list list-inline pull-right ">
+                                            <li class="divider-vertical"></li>
+                                            <li class="dropdown"><a href="#" class=" dropdown-toggle icon-info-sign animate-icon-top-to-bottom icon-big"
+                                                data-toggle="dropdown"><b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#"><i class="icon-info-sign"></i>About</a></li>
+                                                    <li><a href="#"><i class="icon-question-sign"></i>Faq</a></li>
+                                                    <li><a href="#"><i class="icon-envelope"></i>Contact Us</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown"><a href="#" class="dropdown-toggle  animate-icon-top-to-bottom icon-big"
+                                                data-toggle="dropdown" data-bind="css: {'icon-user': !Authenticated()}">
+                                                <img class="profile-img" data-bind="visible:Authenticated, attr:{src: UserPicUrl,alt:DisplayName,title:DisplayName}" />
+                                                <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li data-bind="visible: Authenticated, click:$root.fn.signout"><a href="#"><i class="icon-signout">
+                                                    </i>Sign Out</a></li>
+                                                    <li data-bind="visible: !Authenticated()"><a data-toggle="modal" href="#loginModal">
+                                                        <i class=" icon-signin"></i>Sign In</a> </li>
+                                                    <li><a href="#"><i class="icon-upload"></i>Submit</a></li>
+                                                    <li class="divider"></li>
+                                                    <li class="nav-header">Favourites</li>
+                                                    <li><a href="#"><i class="icon-file-text"></i>My Page</a></li>
+                                                    <li><a href="#"><i class="icon-heart"></i>My Favourites</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="divider-vertical"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="span2">
+                                    </div>
+                                </div>
+                                <!-- /.nav-collapse -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderSection("StickyHeader", false)
+        <div class="gap gap-big">
+        </div>
+        <div>
+            <div class="container-fluid main-body">
+             <!-- ko stopBinding: true -->
+                @RenderBody()
+            <!-- /ko -->
+            </div>
+            <div class="gap gap-big" />
+        </div>
+        @Html.Partial("_Footer")
+    </div>
+    @Html.Partial("_Login")
+    @Html.Partial("_IncludeScript")
+    <script type="text/javascript">
+      $(function () {
+
+                @if (Model.Js)
+                {
+                   <text>
+                    app.common.init({user: @Html.Raw(Json.Encode(Authentication)), menu:  @Html.Raw(Json.Encode(Menu)) });
+                   </text>
+                   
+                }
+                
+        });
+       
+    </script>
+    @RenderSection("Script", false)
+    
+    @Html.Partial("_AddThisPlugin")
+</body>
+</html>

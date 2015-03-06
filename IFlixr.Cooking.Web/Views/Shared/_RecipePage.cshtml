@@ -1,0 +1,49 @@
+﻿@using IFlixr.Cooking.ViewModel
+@model RecipeQueryViewModel
+<div>
+    <div class="container-fluid">
+        <div class="isotope infi-scroll" data-bind="template: { name: 'thumbnail-template',foreach: Recipes}">
+            @if (Model.Js)
+            {
+                <script type="text/html" id="thumbnail-template">
+                    @Html.Partial("_ThumbnailRecipe", new RecipeViewModel())
+                </script>
+            }
+            else
+            {
+                foreach (var recipe in Model.Recipes)
+                {
+                @Html.Partial("_ThumbnailRecipe", recipe)
+                }
+            }
+        </div>
+    </div>
+
+    @if (Model.Js)
+    {
+        
+    <div class="row-fluid hide" data-bind="style:{display: IsMore() ? 'block': 'none'}" >
+        <div class="span4 offset4">
+            <a href="/Browse/Recipe/2" id="next-page">
+                <button class="btn  btn-primary btn-large full-width">
+                    More...
+                </button>
+            </a>
+        </div>
+    </div>
+    }
+    else if(Model.IsMore)
+    {
+          <div class="row-fluid hide">
+        <div class="span4 offset4">
+            <a href="/Browse/Recipe/2" id="next-page">
+                <button class="btn  btn-primary btn-large full-width">
+                    More...
+                </button>
+            </a>
+        </div>
+    </div>
+    }
+</div>
+<div class="gap">
+</div>

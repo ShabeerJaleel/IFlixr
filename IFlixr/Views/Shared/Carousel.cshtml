@@ -1,0 +1,29 @@
+﻿@using IFlixr.ViewModel
+@model CarouselModel
+<div class="carousel-div  @Model.SizeCSSClass" id="@Model.Id">
+        <div >
+            <h3 class="carousel-title">
+                <a class="carousel-title" href="#">@Model.Title</a>
+            </h3>
+        </div>
+        <ul class="block">
+            
+                @foreach (var item in Model.Items)
+                {
+                   <li class="highlight-module show-play-button @item.ModuleSizeCSSClass ">
+                     @Html.Partial("ImageModule", item)
+                   </li>
+                }
+
+        </ul>
+        @if (Model.IsNavigationEnabled)
+        {
+            <a class="carousel-prev @Model.SizeCSSClass" href="#"><span>prev</span></a> 
+            <a class="carousel-next @Model.SizeCSSClass" href="#"><span>next</span></a>
+        }
+        @if (Model.IsPaginationEnabled)
+        {
+            <div class="carousel-pagination">
+            </div>
+        }
+</div>

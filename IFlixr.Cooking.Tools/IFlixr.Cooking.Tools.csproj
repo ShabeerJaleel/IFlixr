@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F9EE424-4EAA-4663-B297-29695AF965C1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFlixr.Cooking.Tools</RootNamespace>
+    <AssemblyName>IFlixr.Cooking.Tools</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Magick.NET-x86, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=x86">
+      <HintPath>..\packages\Magick.NET-Q16-x86.6.8.7.101\lib\net40-client\Magick.NET-x86.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApprovalWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ApprovalWidget.Designer.cs">
+      <DependentUpon>ApprovalWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Browser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Browser.Designer.cs">
+      <DependentUpon>Browser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CuisineManagementWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CuisineManagementWidget.Designer.cs">
+      <DependentUpon>CuisineManagementWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementForm.Designer.cs">
+      <DependentUpon>ManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScraperWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScraperWidget.Designer.cs">
+      <DependentUpon>ScraperWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectablePictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectablePictureBox.Designer.cs">
+      <DependentUpon>SelectablePictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagementWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserManagementWidget.Designer.cs">
+      <DependentUpon>UserManagementWidget.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ApprovalWidget.resx">
+      <DependentUpon>ApprovalWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Browser.resx">
+      <DependentUpon>Browser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CuisineManagementWidget.resx">
+      <DependentUpon>CuisineManagementWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementForm.resx">
+      <DependentUpon>ManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ScraperWidget.resx">
+      <DependentUpon>ScraperWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectablePictureBox.resx">
+      <DependentUpon>SelectablePictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagementWidget.resx">
+      <DependentUpon>UserManagementWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFlixr.Cooking.Base\IFlixr.Cooking.Base.csproj">
+      <Project>{08CB6B60-BCDF-4409-B37C-6FA2F3F8A159}</Project>
+      <Name>IFlixr.Cooking.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Cooking.Data\IFlixr.Cooking.Data.csproj">
+      <Project>{E4B2F3CF-4C98-4A81-ADEE-8DD8E8AD20E8}</Project>
+      <Name>IFlixr.Cooking.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Cooking.Repository\IFlixr.Cooking.Repository.csproj">
+      <Project>{1D087932-4528-415D-A97A-13081438ECC9}</Project>
+      <Name>IFlixr.Cooking.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Cooking.Scraper\IFlixr.Cooking.Scraper.csproj">
+      <Project>{90C1B95A-DB00-4986-86A0-BB2DBB561C7F}</Project>
+      <Name>IFlixr.Cooking.Scraper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.ImageProcessor\IFlixr.ImageProcessor.csproj">
+      <Project>{550980B8-2955-4E45-9EA0-B4CAA7677361}</Project>
+      <Name>IFlixr.ImageProcessor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

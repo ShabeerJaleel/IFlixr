@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Browse</h2>
+<div class="row">
+    <!-- START CENTER TAB - VIDEO -->
+    <div class="center-tab">
+        <div class="">
+            <ul class="nav nav-tabs">
+                <li class=""><a href="" data-toggle="tab"><i class="icon-tag"></i>All Videos</a>
+                </li>
+                <li class="active"><a href="a12" data-toggle="tab"><i class="icon-tag"></i>Movie</a>
+                </li>
+                <li class=""><a href="#" data-toggle="tab"><i class="icon-tag"></i>Music</a> </li>
+                <li class=""><a href="#" data-toggle="tab"><i class="icon-tag"></i>Comedy</a> </li>
+                <li class=""><a href="#" data-toggle="tab"><i class="icon-tag"></i>News & Politics</a>
+                </li>
+                <li class=""><a href="#" data-toggle="tab"><i class="icon-tag"></i>Ameatuer</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- END CENTER TAB - VIDEO -->
+    </div>
+</div>
+@*@section StickyHeader{
+    @Html.Partial("_StickyHeader")
+}*@
+@section Script {
+    @RenderSection("Script", false)
+}

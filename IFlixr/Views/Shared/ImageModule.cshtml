@@ -1,0 +1,24 @@
+﻿@using IFlixr.ViewModel
+@model CarouselItemModel
+<div class="relative">
+<a title="@Model.Title" @*class="fancybox fancybox-media"*@ href="@Model.NavigationLink">
+    <img class="lazy image  @(Model.DisplayHoverBox ? "show-hover-box" : "" ) @Model.ModuleSizeCSSClass" 
+     src="/Images/lazyload_placeholder.gif"   data-original="@Model.ImageUrl" alt="@Model.Title"  data-id="@Model.Id"/>
+    <div class="play-hover-button @Model.ModuleSizeCSSClass" >
+    </div>
+</a>
+<div class="movie-info @Model.ModuleSizeCSSClass">
+<div class="movie-title @Model.ModuleSizeCSSClass">@Model.Title</div>
+@if (Model.DisplayYear)
+{
+    <div class="movie-year">(1995)</div>
+}
+@if (Model.DisplayLanguage)
+{
+    <div class="movie-lang">Malayalam</div> 
+}
+
+</div>
+</div>
+
+

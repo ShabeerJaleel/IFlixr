@@ -1,0 +1,14 @@
+﻿@using IFlixr.ViewModel
+@model HomePageOld
+@*<header>
+    
+</header>*@
+<div>
+    @Html.Partial("TopBanner", Model.TopBanner)
+    <section id="dynamic-homepage" class="dynamic-section" data-url="api/values">
+        @foreach (var item in Model.DynamicPart.Carousels)
+        {
+           @Html.Partial("Carousel", item)
+        }
+    </section>
+</div>

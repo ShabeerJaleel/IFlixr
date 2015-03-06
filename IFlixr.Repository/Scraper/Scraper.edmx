@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IFlixr.Data.Scraper.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="IFlixrDataScraperStoreContainer">
+          <EntitySet Name="TempData" EntityType="IFlixr.Data.Scraper.Store.TempData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Video" EntityType="IFlixr.Data.Scraper.Store.Video" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="TempData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="Skip" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MovieUrl" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="PublishedDate" Type="datetime" Nullable="false" />
+          <Property Name="Uploader" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Source" Type="tinyint" Nullable="false" />
+          <Property Name="VideoId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="Url" Type="varchar" Nullable="false" MaxLength="512" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IFlixr.Data.Scraper" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="IFlixr_ScraperEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TempDatas" EntityType="IFlixr.Data.Scraper.TempData" />
+          <EntitySet Name="Videos" EntityType="IFlixr.Data.Scraper.Video" />
+        </EntityContainer>
+        <EntityType Name="TempData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="512" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+          <Property Type="Boolean" Name="Skip" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MovieUrl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="PublishedDate" Nullable="false" />
+          <Property Type="String" Name="Uploader" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Source" Nullable="false" />
+          <Property Type="String" Name="VideoId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IFlixrDataScraperStoreContainer" CdmEntityContainer="IFlixr_ScraperEntities">
+          <EntitySetMapping Name="TempDatas"><EntityTypeMapping TypeName="IFlixr.Data.Scraper.TempData"><MappingFragment StoreEntitySet="TempData">
+            <ScalarProperty Name="Skip" ColumnName="Skip" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Key" ColumnName="Key" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="IFlixr.Data.Scraper.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Uploader" ColumnName="Uploader" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="MovieUrl" ColumnName="MovieUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Scraper">
+        <EntityTypeShape EntityType="IFlixr.Data.Scraper.TempData" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="IFlixr.Data.Scraper.Video" Width="1.5" PointX="3.375" PointY="0.75" Height="2.5571907552083326" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

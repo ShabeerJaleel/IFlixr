@@ -1,0 +1,99 @@
+﻿<div class="modal hide" id="loginModal">
+    <div class="modal-header" data-bind="with: modelDialogModel">
+        <button type="button" class="close" data-dismiss="modal">
+            ✕</button>
+        <h4 data-bind="text: Title">
+        </h4>
+    </div>
+    <div class="modal-body">
+        @* @Html.Partial("_SocialLogin")*@
+        <div class="tab-content modalTab row-fluid">
+            <!-- Sign In TAB -->
+            <div class="tab-pane active" id="login" data-title="Sign In" data-bind="with: signinModel">
+                <h5>
+                    Sign in using your registered account:</h5>
+                <div class="alert alert-error" data-bind="visible: error().length > 0">
+                    <button type="button" class="close" data-bind="click: $root.fn.hideAlert">
+                        &times;</button>
+                    <strong data-bind="text: error"></strong>
+                </div>
+                <div class="row-fluid">
+                    <form id="signin-form" method="post" action="/Account/Login" data-bind="submit: $root.fn.signin">
+                    @Html.AntiForgeryToken()
+                    <div class="input-prepend  row-fluid">
+                        <span class="add-on pull-left"><i class="icon-envelope"></i></span>
+                        <input type="text" name="username" class="input-xlarge pull-left" placeholder="Email"
+                            data-rule-required="true" data-rule-email="true" autofocus="autofocus">
+                        <label for="username" class="span1">
+                        </label>
+                    </div>
+                    <div class="input-prepend row-fluid">
+                        <span class="add-on pull-left"><i class="icon-key"></i></span>
+                        <input type="password" name="password" class="input-xlarge pull-left" placeholder="Password"
+                            data-rule-required="true" data-rule-minlength="6" required title="Minimum 6 characters required">
+                        <label for="password" class="span1">
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="rememberme" value="1">
+                            Remember me
+                        </label>
+                    </div>
+                    <div class="center">
+                        <button type="submit" class="btn  btn-success">
+                            Sign in</button>
+                    </div>
+                    <input type="hidden" name="returnUrl" data-bind="value: returnUrl" />
+                    </form>
+                    <div>
+                        <div class="center gap gap-tiny">
+                            <a href="#forgotpassword" data-toggle="tab" data-bind="click:  $root.fn.tabChange">
+                                Forgot Password?</a>
+                        </div>
+                        <div class="center gap gap-tiny">
+                            <a href="#signup" data-toggle="tab" data-bind="click: $root.fn.tabChange">Register
+                                if you don't have an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Sign In TAB -->
+            <!-- Forgot password TAB -->
+            <div class="tab-pane fade" id="forgotpassword" data-title="Forgot Password" data-bind="with: forgotPwdModel">
+                <h5>
+                    Hey this stuff happens, send us your email and we'll reset it for you!</h5>
+                <div class="alert" data-bind="visible: error().length > 0, css: { 'alert-error' : isError(), 'alert-success': !isError() }">
+                    <button type="button" class="close" data-bind="click: $root.fn.hideAlert">
+                        &times;</button>
+                    <strong data-bind="text: error"></strong>
+                </div>
+                <div class="row-fluid">
+                    <form id="forgotpassword-form" method="post" action="/Account/ForgotPassword" data-bind="submit: $root.fn.forgotPassword">
+                    <div class="input-prepend row-fluid">
+                        <span class="add-on pull-left"><i class="icon-envelope"></i></span>
+                        <input type="text" class="input-xlarge pull-left" name="username" placeholder="Email"
+                            data-rule-required="true" data-rule-email="true" autofocus="autofocus">
+                        <label for="username" class="span1">
+                        </label>
+                    </div>
+                    <div class="center">
+                        <button type="submit" class="btn  btn-success">
+                            Submit</button>
+                    </div>
+                    <div class="center gap gap-tiny">
+                        <a href="#login" data-toggle="tab" data-bind="click:  $root.fn.tabChange">Wait, I
+                            remember it now!</a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END Forgot password TAB -->
+            <!-- Registration TAB -->
+            <div class="tab-pane fade row-fluid" id="signup" data-title="Sign Up">
+                @Html.Partial("_RegisterUser")
+            </div>
+            <!-- END Registration TAB -->
+        </div>
+    </div>
+</div>

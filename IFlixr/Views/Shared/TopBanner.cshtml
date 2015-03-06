@@ -1,0 +1,30 @@
+﻿@using IFlixr.ViewModel
+@model BannerModel
+<div class="banner-container-background">
+    <div class="banner-container">
+        <div class="banner-carousel">
+            @foreach (var item in Model.Items)
+            {
+                <div class="slide">
+                <a href="/movie/asuravith" title="1st title">
+                <div class="play-hover-button large" @*style="display: none;"*@> </div>
+                </a>
+                <img class="auto-image" src="@item.ImageUrl" alt="" />
+                    <div class="banner-desc">
+                        <h4>
+                           @item.Title</h4>
+                           <br />
+                        <p>
+                            @item.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <a class="banner-prev" href="#"><span>prev</span></a> <a class="banner-next"
+            href="#"><span>next</span></a>
+        <div class="clearfix">
+        </div>
+        <div class="carousel-pagination">
+        </div>
+    </div>
+</div>

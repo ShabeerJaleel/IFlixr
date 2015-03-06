@@ -1,0 +1,123 @@
+﻿@using IFlixr.ViewModel
+@model VideoPage
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row-fluid row-wrap">
+    <!-- START LEFT SIDE BAR   -->
+    <div class="span2 offset1">
+        <div class="gap">
+        </div>
+        <aside class="hidden-phone">
+            <h4>
+                <i class="icon-film box-icon-gray box-icon-to-normal box-icon-left animate-icon-bounce">
+                </i>About this film</h4>
+            
+            <div class="gap gap-small">
+            </div>
+        </aside>
+    </div>
+    <!-- END LEFT SIDE BAR   -->
+    <!-- START CENTER TAB - VIDEO -->
+    <div class="tabbable span6">
+        <ul class="nav nav-tabs" id="movieTabs">
+            <li class="active"><a href="#@Model.UniqueId" data-toggle="tab">@Model.Link.Source</a>
+            </li>
+            
+        </ul>
+        <div class="tab-content">
+                <div class= "tab-pane fade in active" id="@Model.UniqueId">
+                    <div class="shadow-box shadow-box-padding">
+                        <div class="thumb">
+                            <div class="thumb-header">
+                                <div class="hover-image">
+                                    <div @*class="video-wrapper"*@>
+                                        <div class="video-container">
+                                            <iframe  
+                                            data-src= "@Model.Link.GetEmbedSnippet(@Model.UniqueId)"  
+                                            src= "@Model.Link.GetEmbedSnippet(@Model.UniqueId)" 
+                                            frameborder="0" allowfullscreen seamless
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shadow-box well-small">
+                                <div class="thumb-caption float-left">
+                                    <p class="thumb-title">
+                                        <a href="#">@Model.Video.Title</a></p>
+                                </div>
+                                <ul class="list list-inline thumb-meta text-right">
+                                    <li><i class="icon-calendar"></i>@Model.Video.CreatedDate.ToString("MMM, yyyy")</li>
+                                    <li><i class="icon-user"></i><a href="#">@Model.Video.PostedByName</a></li>
+                                </ul>
+                                <div class="gap gap-tiny">
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12 thumb center">
+                                        <ul class="list list-inline margin-right-small">
+                                            <li><a class="icon-thumbs-up box-icon-to-inverse animate-icon-bottom-to-top round"
+                                                href="#"></a></li>@Model.Video.Likes
+                                            <li><a class="icon-thumbs-down box-icon-to-inverse animate-icon-bottom-to-top round"
+                                                href="#"></a></li>@Model.Video.Dislikes
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li><a class="icon-facebook box-icon-to-inverse animate-icon-bottom-to-top round"
+                                                href="#"></a></li>
+                                            <li><a class="icon-twitter box-icon-to-inverse animate-icon-bottom-to-top round"
+                                                href="#"></a></li>
+                                            <li></li>
+                                            <li><a class="icon-unlink box-icon-to-inverse animate-icon-bottom-to-top round" href="#">
+                                            </a></li>
+                                            <li><a class="icon-flag box-icon-to-inverse animate-icon-bottom-to-top round" href="#">
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- END CENTER TAB - VIDEO -->
+
+    <!-- START RIGHT SIDE BAR - TAGS -->
+    <div class="span2">
+        <div class="gap">
+        </div>
+        <aside class="hidden-phone">
+            <h4>
+                <i class="icon-tags box-icon-gray box-icon-to-normal box-icon-left animate-icon-bounce">
+                </i>Tags</h4>
+            <ul class="list list-inline list-icon-color">
+                <li><span class="span span-default"><i class="icon-tag"></i><a href="#">2012</a></span></li>
+                <li><span class="span span-default"><i class="icon-tag"></i><a href="#">@Model.Video.Languages.FirstOrDefault()</a></span></li>
+            </ul>
+        </aside>
+    </div>
+    <!-- END RIGHT SIDE BAR - TAGS -->
+</div>
+<div class="gap">
+</div>
+<!-- START RELATED VIDEOS -->
+@for (var i = 0; i < Model.Related.Count; i++)
+{
+    var rm = @Model.Related[i];
+    <div class= "bg-gray extend" >
+        @Html.Partial("_CarouselVideoHorizontal", rm)
+    </div>
+    <div class="gap">
+    </div>
+}
+<!-- END RELATED VIDEOS -->
+<!-- START COMMENTS -->
+<div class="row-fluid">
+    <div class="span6 offset3">
+        @Html.Partial("_UserComment")
+    </div>
+</div>
+<!-- END COMMENTS -->
+

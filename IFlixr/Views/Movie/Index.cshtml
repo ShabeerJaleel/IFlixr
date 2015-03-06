@@ -1,0 +1,175 @@
+﻿@using IFlixr.ViewModel
+@model MoviePageOld
+<div id="content-container">
+    <div id="movie-container" class="browse-container">
+        <div id="movie-container-first-column" style="float: left">
+            <div id="movie-poster-container">
+                <img style="width: 280px;" src="@Model.ImageLink" alt="@Model.Title" />
+            </div>
+            <div id="movie-share-container">
+                <ul>
+                    <li>
+                        <div class="share-service-icon share-service-icon-facebook" />
+                    </li>
+                    <li>
+                        <div class="share-service-icon share-service-icon-twitter" />
+                    </li>
+                    <li>
+                        <div class="share-service-icon share-service-icon-googleplus" />
+                    </li>
+                </ul>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            <div id="movie-about">
+                <h2>
+                    About this film</h2>
+                <dl>
+                    @*<dd>
+                        Genres:</dd>
+                    <dt itemprop="genre"><a href="/movies/indian-cinema">Indian Cinema</a>, <a href="/movies/crime">
+                        Crime</a>, <a href="/movies/drama">Drama</a> </dt>*@
+                    <dd>
+                        Language:</dd>
+                    <dt itemprop="language">@Model.Language</dt>
+                    <dd>
+                        Country:</dd>
+                    <dt itemprop="language">@Model.Country</dt>
+                    @*<dd>
+                        Subtitles:</dd>
+                    <dt itemprop="subtitles">English </dt>*@
+                    <dd>
+                        Running time:</dd>
+                    <dt itemprop="duration">@Model.DurationText</dt>
+                    <dd>
+                        Rating:
+                    </dd>
+                    <dt>@Model.Rating</dt>
+                    <dd>
+                        Released:</dd>
+                    <dt itemprop="datePublished">@Model.ReleaseDateText</dt>
+                    @*<dd>
+                        Quality:</dd>
+                    <dt>480 (DVD equivalent) </dt>*@
+                </dl>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            <div id="movie-cast">
+                <h2>
+                    Cast &amp; Crew</h2>
+                @if (!String.IsNullOrWhiteSpace(Model.DirectedBy))
+                {
+                    <h3>
+                        Directed By</h3>
+                    <ol>
+                        <li itemprop="director">@Model.DirectedBy</li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.ProducedBy))
+                {
+                    <h3>
+                        Produced By</h3>
+                    <ol>
+                        <li itemprop="producer">@Model.ProducedBy </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.WrittenBy))
+                {
+                    <h3>
+                        WrittenBy</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.WrittenBy</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.Starring))
+                {
+                    <h3>
+                        Starring</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.Starring</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.MusicBy))
+                {
+                    <h3>
+                        Music By</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.MusicBy</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.CinematographyBy))
+                {
+                    <h3>
+                        Cinematography</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.CinematographyBy</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.EditingBy))
+                {
+                    <h3>
+                        Editing By</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.EditingBy</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.Studio))
+                {
+                    <h3>
+                        Studio</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.Studio</span> </li>
+                    </ol>
+                }
+                @if (!String.IsNullOrWhiteSpace(Model.DistributedBy))
+                {
+                    <h3>
+                        Distributed By</h3>
+                    <ol class="character-list">
+                        <li><span class="actor-name" itemprop="actors">@Model.DistributedBy</span> </li>
+                    </ol>
+                }
+            </div>
+            <span class="iflixr-vertical-rule-main-flip"></span><span class="iflixr-vertical-rule-corner-top-flip">
+            </span><span class="iflixr-vertical-rule-corner-bottom-flip"></span>
+        </div>
+        <div id="movie-container-second-column">
+            <div id="movie-title">
+                <h1>
+                    @Model.Title</h1>
+            </div>
+            <div class="movie-button-section">
+                <a href="" class="anchor-button">Play Movie</a>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            <div id="movie-story">
+                @if (Model.IsTrailerAvailable)
+                {
+                    <div class="float-left show-play-button relative">
+                        <a href="@Model.TrailerLink">
+                            <img src="@Model.TrailerImageLink" alt=""/>
+                            <div class="play-hover-button youtube">
+                            </div>
+                        </a>
+                    </div>
+
+                }
+                <p class="description-text">
+                    @Model.Description&nbsp&nbsp<a target="_blank" href="@Model.MovieLink"><span class="external-link">@Model.MovieLinkText</span></a>
+                </p>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            <section id="dynamic-moviepage" class="dynamic-section">
+                @foreach (var item in Model.DynamicPart.Carousels)
+                {
+                    @Html.Partial("Carousel", item)
+                }
+            </section>
+        </div>
+        <div class="clearfix iflixr-horizontal-rule">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@using IFlixr.ViewModel
+@model MovieBrowsePageOld
+<div id="content-container">
+    <div id="movie-container" class="browse-container">
+        <div id="movie-container-second-column">
+            <div >
+            <div id="movie-title">
+                <h1>
+                    Browse</h1>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            <div id="movie-story">
+                <p class="description-text">
+                    Super hit movie Mawali Ek Play Boy (2011) (Telugu Hindi Dub) Synopsis : Madhava
+                    Rao (Vizag Prasad) is a big businessman and his competitor Saxena (Satya Prakash)
+                    is a crook. When Madhav Rao meets with an accident,his daughter Trisha (Trisha)
+                    takes over the company. Raju (Nitin) comes from nowhere to help Trisha. Trisha appoints
+                    Raju as general manager. Trisha has an inseparable younger sister called Usha (Rathi).
+                    Due to certain circumstances,Raju forces himself to disguise as Balu and Usha falls
+                    in love with Balu. As the confusion about mixed identities continue,Munna - another
+                    look alike of Raju - comes from Mumbai. Munna is a right hand of Karim Lala (Saurabh
+                    Shukla) - a Mumbai underworld don. The rest of the story is all about what happens
+                    when Munna try to destroy the family which Raju intend to save!
+                </p>
+            </div>
+            <div class="iflixr-horizontal-rule">
+            </div>
+            </div>
+            <section class="dynamic-section infinite-scrolling">
+                
+                <ul id="container" class="block">
+               
+                    @foreach (CarouselItemModel module in @Model.Content.Items)
+                    {
+                        <li class="element  highlight-module auto">
+                            @Html.Partial("ImageModule", module)
+                        </li>
+                    }
+
+                
+                </ul>
+               
+              <nav id="page_nav">
+                    <a href="/browse/movies/2?abc=sdfsd&sds=sdfsd"></a>
+              </nav>      
+            </section>
+          
+        </div>
+        <div class="clearfix iflixr-horizontal-rule">
+        </div>
+    </div>
+</div>

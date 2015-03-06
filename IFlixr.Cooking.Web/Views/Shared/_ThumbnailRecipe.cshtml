@@ -1,0 +1,45 @@
+﻿@using IFlixr.Cooking.ViewModel
+@model RecipeViewModel
+<div class="span3 item new">
+    <div class="well well-small  shadow-box">
+        <div class="thumb">
+            <div class="thumb-header hover-img">
+                <a class="hover-img" data-bind="attr:{href:Url}, click:  $parent.fn.launchRecipeUrl">
+                    @if (Model.Js)
+                    {
+                        <img data-bind="event:{load: $root.common.fn.onloadImage}, attr:{src: ImageUrl,alt:Title,title:Title}" onloadeddata="" />
+                    }
+                    else
+                    {
+                        <img src="@Model.ImageUrl" alt="@Model.Title" title="@Model.Title" width="270" height="270" />
+                    }
+                  
+                </a>
+                <div class="hover-title-bottom list list-inline">
+
+                  <ul class="hover-title-bottom list list-inline ">
+                    <li><a class="icon-facebook box-icon-to-normal animate-icon-top-to-bottom" href="#" ></a></li>
+                    <li><a class="icon-twitter box-icon-to-normal animate-icon-top-to-bottom" href="#"></a></li>
+                    <li><a class="icon-google-plus box-icon-to-normal animate-icon-top-to-bottom" href="#"></a></li> </ul>
+                    </div>
+            </div>
+            <div class="thumb-caption">
+                <div class="fixed-height">
+                <p  data-bind="text: Title" >@Model.Title</p>
+                </div>
+                <ul class="list list-inline thumb-meta">
+                    <li class="icon-calendar"><span data-bind="text: PosedDateText">@Model.PosedDateText</span></li>
+                    <li class="pull-right"><a data-bind="attr:{href:GalleryUrl}" class="icon-user">
+                    <span data-bind="text: AuthorTitle">@Model.AuthorTitle</span></a></li>
+                </ul>
+                <ul class="list list-inline thumb-meta">
+                    <li><a href="#" data-bind="click:  $parent.fn.toggleFavourite, css:{'icon-gold': IsFavourite}" class="icon-heart"></a><span data-bind="text: FavourCount">@Model.FavourCount</span></li>
+                    <li class="icon-eye-open"><span  data-bind="text: ViewCount">@Model.ViewCount</span></li>
+                    <li class="pull-right "><a class="addthis_button_compact"  addthis:url="http://shabeerjaleel.com"       
+                    addthis:title="An Example Title"  addthis:description="An Example Description"><span class="icon-plus">&nbsp;Share</span></a></li>
+                    <li class="pull-right"><a href="#" class="icon-flag"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

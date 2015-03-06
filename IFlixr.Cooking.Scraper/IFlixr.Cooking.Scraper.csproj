@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90C1B95A-DB00-4986-86A0-BB2DBB561C7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFlixr.Cooking.Scraper</RootNamespace>
+    <AssemblyName>IFlixr.Cooking.Scraper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsQuery">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-x86">
+      <HintPath>..\packages\Magick.NET-Q16-x86.6.8.7.101\lib\net40-client\Magick.NET-x86.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FeedScraperService.cs" />
+    <Compile Include="RecipeScraperBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeScrapers.cs" />
+    <Compile Include="RssReaderBase.cs" />
+    <Compile Include="ScrapedRecipe.cs" />
+    <Compile Include="ScraperLogic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFlixr.Cooking.Base\IFlixr.Cooking.Base.csproj">
+      <Project>{08CB6B60-BCDF-4409-B37C-6FA2F3F8A159}</Project>
+      <Name>IFlixr.Cooking.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Cooking.Data\IFlixr.Cooking.Data.csproj">
+      <Project>{E4B2F3CF-4C98-4A81-ADEE-8DD8E8AD20E8}</Project>
+      <Name>IFlixr.Cooking.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Cooking.Repository\IFlixr.Cooking.Repository.csproj">
+      <Project>{1D087932-4528-415D-A97A-13081438ECC9}</Project>
+      <Name>IFlixr.Cooking.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.ImageProcessor\IFlixr.ImageProcessor.csproj">
+      <Project>{550980B8-2955-4E45-9EA0-B4CAA7677361}</Project>
+      <Name>IFlixr.ImageProcessor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ScrapList.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

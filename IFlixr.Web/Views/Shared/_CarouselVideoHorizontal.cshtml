@@ -1,0 +1,38 @@
+﻿@using IFlixr.ViewModel
+@model VideoCarousel
+<div class="carousel-wrapper">
+    <div class="row-fluid">
+        <div class="span10">
+            <h3><b>
+                <a href="@Model.TitleUrl"> @Model.Title</a></b></h3>
+        </div>
+        <div class="span2">
+            <div class="pull-right">
+                <a class="fredsel-prev box-icon icon-chevron-left" href="#"></a><a class="fredsel-next box-icon icon-chevron-right"
+                    href="#"></a>
+            </div>
+        </div>
+    </div>
+    <div class="fredsel-wrapper">
+        <div class="row">
+            <ul class="list fredsel" data-bind="foreach:Videos">
+            @if (Model.Js)
+            {
+                    <li class="span3">
+                        @Html.Partial("_ThumbnailVideo", Model.Videos[0])
+                    </li>
+            }
+            else
+            {
+                foreach (var mt in Model.Videos)
+                {
+                   
+                    <li class="span3">
+                        @Html.Partial("_ThumbnailVideo", mt)
+                    </li>
+                }
+            }
+            </ul>
+        </div>
+    </div>
+    </div>

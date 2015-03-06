@@ -1,0 +1,68 @@
+﻿@using IFlixr.Cooking.Web
+<h5>
+    Register</h5>
+<div id="vm-register" data-bind="with: registerModel">
+    <form id="register-form" action="Account/Register" method="post" data-bind="submit: $root.fn.signup">
+    <div class="alert alert-error" data-bind="visible: error().length > 0">
+        <button type="button" class="close"@* data-dismiss="alert"*@ data-bind="click: $root.fn.hideAlert">
+            &times;</button>
+        <strong data-bind="text: error"></strong>
+    </div>
+    <div class="row-fluid">
+        <input type="text" class="span5" id="email" name="email" placeholder="Email"
+            data-rule-required="true" data-rule-email="true" data-rule-remote="/account/checkemail"
+            autocomplete="off" autofocus>
+        <label for="email" class="span1">
+        </label>
+        <input type="text" class="span5" name="confirmEmail" placeholder="Confirm Email"
+           data-rule-required="true" data-rule-email="true"
+            data-rule-equalto="#email" autocomplete="off">
+        <label for="confirmEmail" class="span1">
+        </label>
+    </div>
+    <div class="row-fluid">
+        <input type="password" class="span5" id="password" name="password" placeholder="Password"
+            data-rule-required="true" data-rule-minlength="6"
+            required title="Minimum 6 characters required">
+        <label for="password" class="span1">
+        </label>
+        <input type="password" class="span5" name="confirmPassword" placeholder="Confirm Password"
+            data-rule-required="true" data-rule-minlength="6"
+            data-rule-equalto="#password" required title="Minimum 6 characters required">
+        <label for="confirmPassword" class="span1">
+        </label>
+    </div>
+    <div class="row-fluid">
+        <input type="text" class="span11" name="profileName" placeholder="Profile Name (letters, numbers and space)"
+            data-rule-required="true" data-rule-minlength="2" data-rule-maxlength="30"
+            data-rule-remote="/account/checkprofilename" 
+            required title="2-30 characters required">
+        <label for="profileName" class="span1">
+        </label>
+    </div>
+    <div class="row-fluid">
+        <input type="text" class="span5" name="firstName" placeholder="First name" 
+            required title="Minimum 2 characters required" data-rule-required="true" data-rule-minlength="2">
+        <label for="firstName" class="span1">
+        </label>
+        <input type="text" class="span5" name="lastName" placeholder="Last name" 
+            data-rule-required="true" data-rule-minlength="2" required title="Minimum 2 characters required">
+        <label for="lastName" class="span1">
+        </label>
+    </div>
+    <div class="row-fluid">
+        <label for="gender" class="span2">
+            I am a
+        </label>
+        <input class="radio inline" type="radio" name="gender" value="f" checked="checked">Female
+        <input class="radio inline" type="radio" name="gender"  value="m">Male
+    </div>
+    <div class="row-fluid center">
+        <button class="btn btn-success">
+            Register</button>
+    </div>
+    <div class="center gap gap-tiny">
+        <a href="#login" data-toggle="tab" data-bind="click:  $root.fn.tabChange">Sign In
+            if you Already have an account</a></div>
+    </form>
+</div>

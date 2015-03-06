@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{354B5DF7-2BEF-4E66-950D-EB11F7812D23}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFlixr.WebScraper.Client</RootNamespace>
+    <AssemblyName>IFlixr.WebcSraper.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggregatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AggregatorForm.Designer.cs">
+      <DependentUpon>AggregatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapperExtension.cs" />
+    <Compile Include="Model\MovieGridItem.cs" />
+    <Compile Include="Model\IndexChoice.cs" />
+    <Compile Include="Model\MovieModel.cs" />
+    <Compile Include="Model\VideoModel.cs" />
+    <Compile Include="MovieDetailSummaryGridItem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectablePictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectablePictureBox.Designer.cs">
+      <DependentUpon>SelectablePictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovieExtension.cs" />
+    <Compile Include="ValidatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValidatorForm.Designer.cs">
+      <DependentUpon>ValidatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoPlayer.Designer.cs">
+      <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AggregatorForm.resx">
+      <DependentUpon>AggregatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectablePictureBox.resx">
+      <DependentUpon>SelectablePictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValidatorForm.resx">
+      <DependentUpon>ValidatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoPlayer.resx">
+      <DependentUpon>VideoPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\IFlixr.WebScraper.Client.Model.IndexChoice.datasource" />
+    <None Include="Properties\DataSources\IFlixr.WebScraper.Client.Model.VideoModel.datasource" />
+    <None Include="Properties\DataSources\IFlixr.WebScraper.Client.MovieGridItem.datasource" />
+    <None Include="Properties\DataSources\IFlixr.WebScraper.YouTubeVideo.datasource" />
+    <None Include="Properties\DataSources\MovieDetailSummaryGridItem.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFlixr.Base\IFlixr.Base.csproj">
+      <Project>{8B42BC74-3718-4B6E-A676-BA2B45725DBE}</Project>
+      <Name>IFlixr.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Repository\IFlixr.Data.csproj">
+      <Project>{FB34510E-4940-418B-A5E5-15D08E76C5F7}</Project>
+      <Name>IFlixr.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.WebScraper\IFlixr.WebScraper.csproj">
+      <Project>{C23C3CD8-9430-45D6-9053-73FF6BA1C832}</Project>
+      <Name>IFlixr.WebScraper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

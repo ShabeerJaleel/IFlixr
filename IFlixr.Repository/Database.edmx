@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IFlixr.Data.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="IFlixrDataStoreContainer">
+          <EntitySet Name="Banner" EntityType="IFlixr.Data.Store.Banner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CaroselItem" EntityType="IFlixr.Data.Store.CaroselItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Carousel" EntityType="IFlixr.Data.Store.Carousel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Image" EntityType="IFlixr.Data.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Movie" EntityType="IFlixr.Data.Store.Movie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Show" EntityType="IFlixr.Data.Store.Show" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VideoLink" EntityType="IFlixr.Data.Store.VideoLink" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CaroselItem_Carousel" Association="IFlixr.Data.Store.FK_CaroselItem_Carousel">
+            <End Role="Carousel" EntitySet="Carousel" />
+            <End Role="CaroselItem" EntitySet="CaroselItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaroselItem_Show" Association="IFlixr.Data.Store.FK_CaroselItem_Show">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="CaroselItem" EntitySet="CaroselItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_Show" Association="IFlixr.Data.Store.FK_Image_Show">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Show" Association="IFlixr.Data.Store.FK_Movie_Show">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Movie" EntitySet="Movie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Child" Association="IFlixr.Data.Store.FK_Parent_Child">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="Show1" EntitySet="Show" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoLink_Show" Association="IFlixr.Data.Store.FK_VideoLink_Show">
+            <End Role="Show" EntitySet="Show" />
+            <End Role="VideoLink" EntitySet="VideoLink" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Category" Type="tinyint" Nullable="false" />
+          <Property Name="Language" Type="tinyint" Nullable="false" />
+          <Property Name="Link" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="Text" Type="varchar" Nullable="false" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="CaroselItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CaroselId" Type="int" Nullable="false" />
+          <Property Name="ShowId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carousel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="TitleLink" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Language" Type="tinyint" Nullable="false" />
+          <Property Name="Category" Type="tinyint" Nullable="false" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="Size" Type="tinyint" Nullable="false" />
+          <Property Name="Rows" Type="tinyint" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShowId" Type="int" Nullable="false" />
+          <Property Name="FullPath" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="SupportedDimensions" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ReleaseData" Type="date" Nullable="false" />
+          <Property Name="DirectedBy" Type="varchar" MaxLength="4000" />
+          <Property Name="ProducedBy" Type="varchar" MaxLength="4000" />
+          <Property Name="WrittenBy" Type="varchar" MaxLength="4000" />
+          <Property Name="Starring" Type="varchar" MaxLength="4000" />
+          <Property Name="MusicBy" Type="varchar" MaxLength="4000" />
+          <Property Name="SongsBy" Type="varchar" MaxLength="4000" />
+          <Property Name="CinematographyBy" Type="varchar" MaxLength="4000" />
+          <Property Name="EditingBy" Type="varchar" MaxLength="4000" />
+          <Property Name="Studio" Type="varchar" MaxLength="4000" />
+          <Property Name="DistributedBy" Type="varchar" MaxLength="4000" />
+          <Property Name="ScreenplayBy" Type="varchar" MaxLength="4000" />
+          <Property Name="RunningTime" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Show">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="UniqueToken" Type="varchar" MaxLength="250" />
+          <Property Name="Language" Type="tinyint" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="Country" Type="tinyint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="VideoLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShowId" Type="int" Nullable="false" />
+          <Property Name="UniqueToken" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Url" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="IndexNumber" Type="int" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="PublishedDate" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="Uploader" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Source" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CaroselItem_Carousel">
+          <End Role="Carousel" Type="IFlixr.Data.Store.Carousel" Multiplicity="1" />
+          <End Role="CaroselItem" Type="IFlixr.Data.Store.CaroselItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carousel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CaroselItem">
+              <PropertyRef Name="CaroselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaroselItem_Show">
+          <End Role="Show" Type="IFlixr.Data.Store.Show" Multiplicity="1" />
+          <End Role="CaroselItem" Type="IFlixr.Data.Store.CaroselItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CaroselItem">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_Show">
+          <End Role="Show" Type="IFlixr.Data.Store.Show" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Image" Type="IFlixr.Data.Store.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Show">
+          <End Role="Show" Type="IFlixr.Data.Store.Show" Multiplicity="1" />
+          <End Role="Movie" Type="IFlixr.Data.Store.Movie" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Child">
+          <End Role="Show" Type="IFlixr.Data.Store.Show" Multiplicity="0..1" />
+          <End Role="Show1" Type="IFlixr.Data.Store.Show" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Show1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoLink_Show">
+          <End Role="Show" Type="IFlixr.Data.Store.Show" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VideoLink" Type="IFlixr.Data.Store.VideoLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoLink">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IFlixr.Data" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="IFlixrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Shows" EntityType="IFlixr.Data.Show" />
+          <EntitySet Name="VideoLinks" EntityType="IFlixr.Data.VideoLink" />
+          <AssociationSet Name="FK_Movie_Show" Association="IFlixr.Data.FK_Movie_Show">
+            <End Role="Show" EntitySet="Shows" />
+            <End Role="Movie" EntitySet="Shows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Child" Association="IFlixr.Data.FK_Parent_Child">
+            <End Role="Show" EntitySet="Shows" />
+            <End Role="Show1" EntitySet="Shows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoLink_Show" Association="IFlixr.Data.FK_VideoLink_Show">
+            <End Role="Show" EntitySet="Shows" />
+            <End Role="VideoLink" EntitySet="VideoLinks" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="IFlixr.Data.Image" />
+          <AssociationSet Name="FK_Image_Show" Association="IFlixr.Data.FK_Image_Show">
+            <End Role="Show" EntitySet="Shows" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="Banners" EntityType="IFlixr.Data.Banner" />
+          <EntitySet Name="CaroselItems" EntityType="IFlixr.Data.CaroselItem" />
+          <EntitySet Name="Carousels" EntityType="IFlixr.Data.Carousel" />
+          <AssociationSet Name="FK_CaroselItem_Carousel" Association="IFlixr.Data.FK_CaroselItem_Carousel">
+            <End Role="Carousel" EntitySet="Carousels" />
+            <End Role="CaroselItem" EntitySet="CaroselItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaroselItem_Show" Association="IFlixr.Data.FK_CaroselItem_Show">
+            <End Role="Show" EntitySet="Shows" />
+            <End Role="CaroselItem" EntitySet="CaroselItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Movie" BaseType="IFlixr.Data.Show">
+          <Property Type="DateTime" Name="ReleaseData" Nullable="false" />
+          <Property Type="String" Name="DirectedBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProducedBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WrittenBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Starring" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MusicBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SongsBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CinematographyBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EditingBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Studio" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DistributedBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ScreenplayBy" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="RunningTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Show">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+          <Property Name="UniqueToken" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Children" Relationship="IFlixr.Data.FK_Parent_Child" FromRole="Show" ToRole="Show1" />
+          <NavigationProperty Name="Parent" Relationship="IFlixr.Data.FK_Parent_Child" FromRole="Show1" ToRole="Show" />
+          <NavigationProperty Name="VideoLinks" Relationship="IFlixr.Data.FK_VideoLink_Show" FromRole="Show" ToRole="VideoLink" />
+          <NavigationProperty Name="Images" Relationship="IFlixr.Data.FK_Image_Show" FromRole="Show" ToRole="Image" />
+          <Property Type="Byte" Name="Language" Nullable="false" />
+          <Property Type="Int16" Name="Year" Nullable="false" />
+          <Property Type="Byte" Name="Country" Nullable="false" />
+          <NavigationProperty Name="CaroselItems" Relationship="IFlixr.Data.FK_CaroselItem_Show" FromRole="Show" ToRole="CaroselItem" />
+          <Property Type="String" Name="Description" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VideoLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShowId" Type="Int32" Nullable="false" />
+          <Property Name="UniqueToken" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="512" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Show" Relationship="IFlixr.Data.FK_VideoLink_Show" FromRole="VideoLink" ToRole="Show" />
+          <Property Type="Int32" Name="IndexNumber" Nullable="false" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <Property Type="DateTime" Name="PublishedDate" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="Uploader" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Source" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Movie_Show">
+          <End Role="Show" Type="IFlixr.Data.Show" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movie" Type="IFlixr.Data.Movie" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Child">
+          <End Role="Show" Type="IFlixr.Data.Show" Multiplicity="0..1" />
+          <End Role="Show1" Type="IFlixr.Data.Show" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Show1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoLink_Show">
+          <End Role="Show" Type="IFlixr.Data.Show" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VideoLink" Type="IFlixr.Data.VideoLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoLink">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ShowId" Nullable="false" />
+          <Property Type="String" Name="FullPath" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsDefault" Nullable="false" />
+          <Property Type="Int32" Name="Width" Nullable="false" />
+          <Property Type="Int32" Name="Height" Nullable="false" />
+          <Property Type="Int32" Name="SupportedDimensions" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="IFlixr.Data.FK_Image_Show" FromRole="Image" ToRole="Show" />
+        </EntityType>
+        <Association Name="FK_Image_Show">
+          <End Type="IFlixr.Data.Show" Role="Show" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="IFlixr.Data.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Category" Nullable="false" />
+          <Property Type="Byte" Name="Language" Nullable="false" />
+          <Property Type="String" Name="Link" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CaroselItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CaroselId" Nullable="false" />
+          <Property Type="Int32" Name="ShowId" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Carousel" Relationship="IFlixr.Data.FK_CaroselItem_Carousel" FromRole="CaroselItem" ToRole="Carousel" />
+          <NavigationProperty Name="Show" Relationship="IFlixr.Data.FK_CaroselItem_Show" FromRole="CaroselItem" ToRole="Show" />
+        </EntityType>
+        <EntityType Name="Carousel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TitleLink" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Language" Nullable="false" />
+          <Property Type="Byte" Name="Category" Nullable="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="Byte" Name="Size" Nullable="false" />
+          <Property Type="Byte" Name="Rows" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="CaroselItems" Relationship="IFlixr.Data.FK_CaroselItem_Carousel" FromRole="Carousel" ToRole="CaroselItem" />
+        </EntityType>
+        <Association Name="FK_CaroselItem_Carousel">
+          <End Type="IFlixr.Data.Carousel" Role="Carousel" Multiplicity="1" />
+          <End Type="IFlixr.Data.CaroselItem" Role="CaroselItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carousel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CaroselItem">
+              <PropertyRef Name="CaroselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaroselItem_Show">
+          <End Type="IFlixr.Data.Show" Role="Show" Multiplicity="1" />
+          <End Type="IFlixr.Data.CaroselItem" Role="CaroselItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Show">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CaroselItem">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IFlixrDataStoreContainer" CdmEntityContainer="IFlixrEntities">
+          <EntitySetMapping Name="Shows">
+            <EntityTypeMapping TypeName="IsTypeOf(IFlixr.Data.Show)">
+              <MappingFragment StoreEntitySet="Show">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UniqueToken" ColumnName="UniqueToken" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(IFlixr.Data.Movie)">
+              <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="RunningTime" ColumnName="RunningTime" />
+                <ScalarProperty Name="ScreenplayBy" ColumnName="ScreenplayBy" />
+                <ScalarProperty Name="DistributedBy" ColumnName="DistributedBy" />
+                <ScalarProperty Name="Studio" ColumnName="Studio" />
+                <ScalarProperty Name="EditingBy" ColumnName="EditingBy" />
+                <ScalarProperty Name="CinematographyBy" ColumnName="CinematographyBy" />
+                <ScalarProperty Name="SongsBy" ColumnName="SongsBy" />
+                <ScalarProperty Name="MusicBy" ColumnName="MusicBy" />
+                <ScalarProperty Name="Starring" ColumnName="Starring" />
+                <ScalarProperty Name="WrittenBy" ColumnName="WrittenBy" />
+                <ScalarProperty Name="ProducedBy" ColumnName="ProducedBy" />
+                <ScalarProperty Name="DirectedBy" ColumnName="DirectedBy" />
+                <ScalarProperty Name="ReleaseData" ColumnName="ReleaseData" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="VideoLinks"><EntityTypeMapping TypeName="IFlixr.Data.VideoLink"><MappingFragment StoreEntitySet="VideoLink">
+            <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Uploader" ColumnName="Uploader" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+            <ScalarProperty Name="UniqueToken" ColumnName="UniqueToken" />
+            <ScalarProperty Name="Url" ColumnName="Url" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="IFlixr.Data.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="SupportedDimensions" ColumnName="SupportedDimensions" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+                <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="IFlixr.Data.Banner">
+              <MappingFragment StoreEntitySet="Banner">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaroselItems">
+            <EntityTypeMapping TypeName="IFlixr.Data.CaroselItem">
+              <MappingFragment StoreEntitySet="CaroselItem">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+                <ScalarProperty Name="CaroselId" ColumnName="CaroselId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carousels">
+            <EntityTypeMapping TypeName="IFlixr.Data.Carousel">
+              <MappingFragment StoreEntitySet="Carousel">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Rows" ColumnName="Rows" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="TitleLink" ColumnName="TitleLink" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Database">
+        <EntityTypeShape EntityType="IFlixr.Data.Movie" Width="1.5" PointX="3" PointY="1" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="IFlixr.Data.Show" Width="1.5" PointX="0.75" PointY="1.875" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="IFlixr.Data.VideoLink" Width="1.5" PointX="4.625" PointY="4" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="IFlixr.Data.FK_Movie_Show" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.802957786296834" />
+          <ConnectorPoint PointX="3" PointY="3.802957786296834" />
+        </AssociationConnector>
+        <AssociationConnector Association="IFlixr.Data.FK_Parent_Child" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="1.875" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="1.625" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="1.625" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="1.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="IFlixr.Data.FK_VideoLink_Show" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.9874479166666656" />
+          <ConnectorPoint PointX="4.625" PointY="4.9874479166666656" />
+        </AssociationConnector>
+        <InheritanceConnector EntityType="IFlixr.Data.Movie" ManuallyRouted="false" >
+          <ConnectorPoint PointX="2.25" PointY="2.9622176559270028" />
+          <ConnectorPoint PointX="2.625" PointY="2.9622176559270028" />
+          <ConnectorPoint PointX="2.625" PointY="2.7839640654804456" />
+          <ConnectorPoint PointX="3" PointY="2.7839640654804456" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="IFlixr.Data.Image" Width="1.5" PointX="3" PointY="8" Height="2.5571907552083317" />
+        <AssociationConnector Association="IFlixr.Data.FK_Image_Show" >
+          <ConnectorPoint PointX="1.5" PointY="5.3936979166666656" />
+          <ConnectorPoint PointX="1.5" PointY="9.2785953776041659" />
+          <ConnectorPoint PointX="3" PointY="9.2785953776041659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="IFlixr.Data.Banner" Width="1.5" PointX="5.375" PointY="0.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="IFlixr.Data.CaroselItem" Width="1.5" PointX="7.375" PointY="0.75" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="IFlixr.Data.Carousel" Width="1.5" PointX="7.375" PointY="3.75" Height="2.7494921874999996" />
+        <AssociationConnector Association="IFlixr.Data.FK_CaroselItem_Carousel" >
+          <ConnectorPoint PointX="8.125" PointY="3.75" />
+          <ConnectorPoint PointX="8.125" PointY="2.922587890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="IFlixr.Data.FK_CaroselItem_Show" >
+          <ConnectorPoint PointX="2.25" PointY="1.8761528461538464" />
+          <ConnectorPoint PointX="2.625" PointY="1.5011528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="0.37499999999999978" />
+          <ConnectorPoint PointX="7.0011528461538459" PointY="0.37499999999999978" />
+          <ConnectorPoint PointX="7.3761528461538459" PointY="0.75" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

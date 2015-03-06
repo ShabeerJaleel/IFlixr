@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5E700E39-A2B6-478C-843A-AD66BDFAE1F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFlixr.ViewModel</RootNamespace>
+    <AssemblyName>IFlixr.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CompilerServices.AsyncTargetingPack.Net4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CompilerServices.AsyncTargetingPack.1.0.1\lib\net40\Microsoft.CompilerServices.AsyncTargetingPack.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="MovieBrowsePage.cs" />
+    <Compile Include="VideoPage.cs" />
+    <Compile Include="Old\BannerModel.cs" />
+    <Compile Include="Old\BannerItem.cs" />
+    <Compile Include="Base\BaseModel.cs" />
+    <Compile Include="Old\CarouselModel.cs" />
+    <Compile Include="Old\DynamicLayout.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Old\HomePageOld.cs" />
+    <Compile Include="Old\CarouselItemModel.cs" />
+    <Compile Include="Old\HoverBoxModel.cs" />
+    <Compile Include="Old\IJsTemplate.cs" />
+    <Compile Include="Old\ModuleContainer.cs" />
+    <Compile Include="Old\MovieBannerItem.cs" />
+    <Compile Include="Old\MovieBrowsePage.cs" />
+    <Compile Include="Old\MoviePageOld.cs" />
+    <Compile Include="HomePage.cs" />
+    <Compile Include="MovieCarousel.cs" />
+    <Compile Include="MoviePage.cs" />
+    <Compile Include="ThumbnailMovie.cs" />
+    <Compile Include="ThumbnailVideo.cs" />
+    <Compile Include="VideoCarousel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Old\SearchResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IFlixr.Base\IFlixr.Base.csproj">
+      <Project>{8B42BC74-3718-4B6E-A676-BA2B45725DBE}</Project>
+      <Name>IFlixr.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFlixr.Model\IFlixr.Data.Model.csproj">
+      <Project>{9041E0B7-37E6-4296-878F-DEB7FA422837}</Project>
+      <Name>IFlixr.Data.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

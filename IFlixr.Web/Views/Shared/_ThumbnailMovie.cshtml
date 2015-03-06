@@ -1,0 +1,63 @@
+﻿@using IFlixr.ViewModel
+@model ThumbnailMovie
+<div class="span3 iso">
+    <div class="well well-small shadow-box">
+        <div class="thumb">
+            <div class="thumb-header">
+                <div class="hover-img">
+                    @if (Model.Js)
+                    {
+                        <img data-bind="attr:{src: ImageUrl,alt:Title,title:Title}" />
+                    }
+                    else
+                    {
+                        <img src="@Model.ImageUrl" alt="@Model.Title" title="@Model.Title"  />
+                    }
+                    <ul class="list list-inline hover-icon-group">
+                        <li><a class="icon-youtube-play box-icon-big round animate-icon-tada" 
+                         @(Model.Js ? "data-bind=attr:{href:Url}" : "href=" + @Model.Url)   >
+                        </a></li>
+                    </ul>
+                    <ul class="list list-inline   hover-icon-group-top-right">
+                        <li><a class="icon-facebook round box-icon-to-normal animate-icon-top-to-bottom"
+                            href="#"></a></li>
+                        <li><a class="icon-twitter round box-icon-to-normal animate-icon-top-to-bottom" href="#">
+                        </a></li>
+                    </ul>
+                    @if (Model.Size == ThumbnailSize.Small)
+                    {
+                        <h5 class="hover-title hover-hold wrap" data-bind="text: Title">@Model.Title.ToUpper()</h5>
+                    }
+                </div>
+            </div>
+            <div class="thumb-caption">
+                @if (Model.Size != ThumbnailSize.Small)
+                {
+                    <h5 class="thumb-title">
+                        <a @(Model.Js ? "data-bind=attr:{href:Url}" : "href=" + @Model.Url) >@Model.Title</a></h5>
+                }
+                <ul class="list list-inline thumb-meta">
+                    <li><i class="icon-film"></i><a href="#" data-bind="text: ReleaseYearText">@Model.ReleasedDate.Year</a></li>
+                    <li><i class="icon-comments"></i><a href="#" data-bind="text: PrimaryLanguage">@Model.PrimaryLanguage</a></li>
+                    <li><i class="icon-calendar"></i><a href="#" data-bind="text: PostedDateText">@Model.PostedDateText</a></li>
+                    <li><i class="icon-user"></i><a href="#" data-bind="text: PostedBy">@Model.PostedBy</a></li>
+                </ul>
+                @if (Model.Size != ThumbnailSize.Small)
+                {
+                    if (Model.Js)
+                    {
+                         <p class="thumb-desc" >
+                         <span data-bind="text: Description"></span>
+                        <a data-bind="attr:{href: DescriptionUrl}"><i class="icon-external-link"></i></a></p>
+                    }
+                    else
+                    {
+                        
+                    <p class="thumb-desc">
+                        @Model.Description&nbsp;<a href="@Model.DescriptionUrl"><i class="icon-external-link"></i></a></p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@using IFlixr.Cooking.ViewModel
+@model RecipePageViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div  class="vm-page">
+<div class="container-fluid">
+<h3 data-bind="text:Title"></h3>
+</div>
+@Html.Partial("_RecipePage", Model)
+</div>
+@section Script{
+    <script type="text/javascript">
+        $(function () {
+
+                @if (Model.Js)
+                {
+                   <text>
+                   app.recipeView.init(@Html.Raw(Json.Encode(Model)));
+                   </text>
+                   
+                }
+                
+        });
+    </script>
+}

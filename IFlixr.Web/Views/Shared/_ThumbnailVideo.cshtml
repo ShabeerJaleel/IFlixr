@@ -1,0 +1,63 @@
+﻿@using IFlixr.ViewModel
+@model ThumbnailVideo
+<div class="span3 iso">
+    <div class="well well-small shadow-box">
+        <div class="thumb">
+            <div class="thumb-header">
+                <div class="hover-img">
+                    @if (Model.Js)
+                    {
+                        <img data-bind="attr:{src: ImageUrl,alt:Title,title:Title}" />
+                    }
+                    else
+                    {
+                        <img src="@Model.ImageUrl" alt="@Model.Title" title="@Model.Title"  />
+                    }
+                    <ul class="list list-inline hover-icon-group">
+                        <li><a class="icon-youtube-play box-icon round animate-icon-tada" href="#"></a></li>
+                    </ul>
+                    <ul class="list list-inline   hover-icon-group-center-bottom">
+                        <li><a class="icon-facebook   round box-icon-to-normal animate-icon-top-to-bottom"
+                            href="#"></a></li>
+                        <li><a class="icon-twitter  round box-icon-to-normal animate-icon-top-to-bottom"
+                            href="#"></a></li>
+                    </ul>
+                    @if (Model.Size == ThumbnailSize.Small)
+                    {
+                        <p class="hover-title hover-hold wrap" data-bind="text: Title">@Model.Title</p>
+                    }
+                </div>
+            </div>
+            <div class="thumb-caption">
+                @if (Model.Size != ThumbnailSize.Small)
+                {
+                    <a href="#" data-bind="text: Title">@Model.Title</a>
+                }
+                <ul class="list list-inline thumb-meta">
+                    <li><i class="icon-facetime-video"></i>
+                        @if (Model.Js)
+                        {
+                            <!--  ko foreach: TypeTexts -->
+                            <a href="#" data-bind="text: $data"></a>
+                           <!-- /ko -->
+                        }
+                        else
+                        {
+                            
+                                foreach (var type in Model.TypeTexts)
+                                {
+                                    <a href="#">@type</a>
+                                }
+
+                        }
+                    </li>
+                    <li><i class="icon-comments"></i><a href="#" data-bind="text: PrimaryLanguage">@Model.PrimaryLanguage</a></li>
+                </ul>
+                <ul class="list list-inline thumb-meta">
+                    <li><i class="icon-calendar"></i><a href="#" data-bind="text: PostedDateText">@Model.PostedDateText</a></li>
+                    <li><i class="icon-user"></i><a href="#" data-bind="text: PostedBy">@Model.PostedBy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

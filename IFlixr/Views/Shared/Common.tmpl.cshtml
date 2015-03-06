@@ -1,0 +1,32 @@
+﻿<div class="LargeHorizontal" data-tmpl="largehorizontal-carousel">
+    <div  class="carousel-div" id="{{:Id}}" >
+    <div class="carousel-title">
+        <h3>
+        <a href="#">{{:Title}}        
+        </a>
+        </h3>
+    </div>
+        <ul >
+        {{for Items}}
+        <li style="height:340px" >
+            <a title="1st title" @*class="fancybox fancybox-media"*@ href="{{:NavigationLink}}" @*href="http://www.youtube.com/watch?v=Kmet_qJoN_U"*@>
+            <img class="image" style="width:220px;height:320px" src="{{:ImageUrl}}" alt="" />
+            <div class="play-hover-button large" style="width: 80px; height: 80px; top:114px;margin-left:70px;display:none"></div>
+            </a>
+            
+            @*<div style="height:20px;color: #333333">22 Female Kottayam</div>*@
+            
+        </li>
+        {{/for}}
+        </ul>
+        <div class="clearfix" />
+        {{if IsNavigationEnabled }}
+        <a class="carousel-prev" href="#"><span>prev</span></a> 
+        <a class="carousel-next" href="#"><span>next</span></a>
+        {{/if}}
+        {{if IsPaginationEnabled}}
+        <div class="carousel-pagination">
+        {{/if}}
+        </div>
+    </div>
+</div>

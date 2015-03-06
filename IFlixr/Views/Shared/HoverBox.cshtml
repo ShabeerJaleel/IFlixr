@@ -1,0 +1,44 @@
+﻿@using IFlixr.ViewModel
+@model HoverBoxModel
+
+@{
+  Layout = null;
+}
+
+
+<div class="hover-box ui-tooltip" style="width:200px;height:250px" >
+    <div class="hover-info movie">
+        <div class="title">
+            <div class="video-title bold">
+                @Model.Title</div>
+        </div>
+        <div class="duration">
+            @Model.DurationText</div>
+        <div class="details">
+           @Model.DetailsText
+        </div>
+        @*<div class="rating-stars">
+            <div id="402433">
+                <span class="rating-star small full"></span><span class="rating-star small full">
+                </span><span class="rating-star small full"></span><span class="rating-star small empty">
+                </span><span class="rating-star small empty"></span>
+            </div>
+        </div>*@
+        <div class="genre">
+            <a> @Model.Language </a>
+        </div>
+        <div class="description">
+            @Model.Description
+        </div>
+        <div class="separator">
+        </div>
+        <div class="footer">
+            @Model.Footer
+        </div>
+       @* <div class="button mini save">
+            Add to Queue</div>
+        <div style="display: none;" class="button mini remove">
+            Remove from Queue</div>*@
+    </div>
+</div>
+

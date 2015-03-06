@@ -1,0 +1,187 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>iFlixr - Share your videos</title>
+    <!-- meta info -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="Template, html, premium, themeforest" />
+    <meta name="description" content="Share your videos">
+    <meta name="author" content="Tsoy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Partial("_IncludeCSS")
+   
+</head>
+<body class="width1200 sticky-header" lang="en">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container-global">
+        <header>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                                    </span></a><a class="brand logo" href="/">
+                                        <img src="~/Content/img/logo.png" alt="logo" title="logo"></a>
+                            </div>
+                            <div class="span10">
+                                <div class="nav-collapse navbar-responsive-collapse collapse">
+                                    <div class="span3">
+                                    <ul class="nav">
+                                        <li class="active"><a href="/"><i class="icon-home"></i>&nbsp;Home</a></li>
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                            class="icon-tags"></i>&nbsp;Tags <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/Browse" class="icon-ok">All</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="/Browse/Movie">Movies</a></li>
+                                                <li><a href="/Browse/Music">Music</a></li>
+                                                <li class="divider"></li>
+                                                @*<li class="nav-header">News</li>*@
+                                                <li><a href="/Browse/Comedy">Comedy</a></li>
+                                                <li><a href="/Browse/Clips">Clips</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                    <div class="span3">
+                                    <form class="form-search pull-left nav" action="">
+                                    <div class="input-append ">
+                                        <input type="text" class="span search-query">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-search"></i>
+                                        </button>
+                                    </div>
+                                    </form>
+                                    </div>
+                                    <div class="span6">
+                                    <ul class="nav list list-inline pull-right ">
+                                        <li><span><a href="#" class="icon-facebook round box-icon-to-normal animate-icon-top-to-bottom">
+                                        </a></span></li>
+                                        <li><span><a href="#" class="icon-twitter round box-icon-to-normal animate-icon-top-to-bottom">
+                                        </a></span></li>
+                                        <li class="divider-vertical"></li>
+                                        <li class="dropdown"><a href="#" class=" dropdown-toggle icon-info animate-icon-top-to-bottom icon-big"
+                                            data-toggle="dropdown"><b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">About</a></li>
+                                                <li><a href="#">Help</a></li>
+                                                <li><a href="#">Contact Us</a></li>
+                                                <li><a href="#">Report a Problem</a></li>
+                                                <li><a href="#">Terms of Use</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#" class=" dropdown-toggle icon-comments animate-icon-top-to-bottom icon-big"
+                                            data-toggle="dropdown"><b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#" class="icon-ok">All</a></li>
+                                                <li><a href="#">English</a></li>
+                                                <li class="divider"></li>
+                                                <li class="nav-header">Indian</li>
+                                                <li><a href="#">Hindi</a></li>
+                                                <li><a href="#">Tamil</a></li>
+                                                <li><a href="#">Telugu</a></li>
+                                                <li><a href="#">Malayalam</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#" class=" dropdown-toggle icon-user animate-icon-top-to-bottom icon-big"
+                                            data-toggle="dropdown"><b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Sign In</a></li>
+                                                <li><a href="#">Register</a></li>
+                                                <li class="divider"></li>
+                                                <li class="nav-header">Favourites</li>
+                                                <li><a href="#">My Channel</a></li>
+                                                <li><a href="#">Favourite Videos</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+                                <!-- /.nav-collapse -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderSection("StickyHeader", false)
+        <div class="gap gap-big">
+        </div>
+        <div>
+            <div class="container-fluid main-body">
+                @RenderBody()
+            </div>
+            <div class="gap gap-big" />
+        </div>
+        <footer class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="span2">
+                        <a class="logo" href="/">
+                            <img src="~/Content/img/logo-footer.png" alt="logo" title="logo" />
+                        </a>
+                        <div class="gap gap-small">
+                        </div>
+                    </div>
+                    <div class="span3 offset1">
+                        <h5>
+                            About</h5>
+                        <p>
+                            Pharetra orci proin sed lorem ligula maecenas tristique porta tristique cum lacus
+                            porta laoreet semper netus faucibus aenean bibendum congue tempus curabitur amet
+                            dolor erat ridiculus facilisi nibh risus hac</p>
+                    </div>
+                    <div class="span3">
+                        <h5>
+                            Subscribe</h5>
+                        <p>
+                            Ultrices magnis euismod tempus mi nunc convallis sem dis duis</p>
+                        <form class="sign-up" action="#">
+                        <input type="text" placeholder="E-mail" class="span3" /><span class="help-block">*We
+                            never send spam</span>
+                        <input type="submit" value="Subscribe" class="btn btn-primary" />
+                        </form>
+                    </div>
+                    <div class="span3">
+                        <h5>
+                            Keep in Touch</h5>
+                        <p>
+                            Curabitur congue molestie vitae porttitor enim nulla consequat non donec arcu himenaeos
+                            eget lectus vehicula vel inceptos ultrices taciti nec</p>
+                        <ul class="list list-inline">
+                            <li><a class="icon-facebook box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                            <li><a class="icon-twitter box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                            <li><a class="icon-dribbble box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                            <li><a class="icon-flickr box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                            <li><a class="icon-google-plus box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                            <li><a class="icon-rss box-icon-inverse box-icon-to-normal round animate-icon-left-to-right"
+                                href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright center">
+            <p>
+                Copyright &#169; 2013 <a href="/">New Wave</a>. All Right Reserved.</p>
+        </div>
+    </div>
+@Html.Partial("_IncludeScript")
+@RenderSection("Script", false)
+<script type="text/javascript">
+    app.init.wirePlugins();
+</script>
+</body>
+
+</html>

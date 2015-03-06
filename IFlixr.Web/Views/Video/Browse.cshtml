@@ -1,0 +1,53 @@
+﻿@using IFlixr.ViewModel
+@model List<ThumbnailVideo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- START LIGHTBOX GALLERY -->
+
+<h2>Recent Videos</h2>
+<div class="row row-wrap" id="popup-gallery1">
+    @foreach(var video in @Model)
+    {
+        if (!String.IsNullOrWhiteSpace(video.ImageUrl))
+        {
+            @Html.Partial("_ThumbnailVideo", video)
+        }
+    }
+    @foreach(var video in @Model)
+    {
+        if (!String.IsNullOrWhiteSpace(video.ImageUrl))
+        {
+            @Html.Partial("_ThumbnailVideo", video)
+        }
+    }
+  
+</div>
+
+<div class="bg-gray gap gap-big">
+<h2>New Videos</h2>
+<div class="bg-gray gap gap-big">
+<div class="row row-wrap " id="popup-gallery2" >
+    @foreach(var video in @Model)
+    {
+        if (!String.IsNullOrWhiteSpace(video.ImageUrl))
+        {
+            @Html.Partial("_ThumbnailVideo", video)
+        }
+    }
+     @foreach(var video in @Model)
+    {
+        if (!String.IsNullOrWhiteSpace(video.ImageUrl))
+        {
+            @Html.Partial("_ThumbnailVideo", video)
+        }
+    }
+  </div>  
+</div>
+</div>
+
+
+<!-- END LIGHTBOX GALLERY -->
+<div class="gap">
+</div>
